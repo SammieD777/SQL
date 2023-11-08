@@ -1,0 +1,86 @@
+USE [C126_samantha.davila777_gmail]
+GO
+/****** Object:  StoredProcedure [dbo].[Friends_Insert]    Script Date: 11/8/2023 8:42:11 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER proc [dbo].[Friends_Insert]
+				   (@Title nvarchar(50),
+					@Bio nvarchar(50), 
+					@Summary nvarchar(50), 
+					@Headline nvarchar(50), 
+					@Slug nvarchar(50), 
+					@StatusId int,
+					@PrimaryImageUrl nvarchar(128), 
+					@UserId int,
+					@Id int OUTPUT)
+
+
+as
+
+
+/*
+
+Declare @Id int = 0
+
+Declare             @Title nvarchar(50) = 'Bestie',
+					@Bio nvarchar(50) = 'From The Bronx', 
+					@Summary nvarchar(50) = 'Ride or Die', 
+					@Headline nvarchar(50) = 'The bestest human being', 
+					@Slug nvarchar(50) = 'Tamir-60-1', 
+					@StatusId int = 1234,
+					@PrimaryImageUrl nvarchar(128) = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.icanvas.com%2Fcanvas-print%2Fcool-cat-tum27&psig=AOvVaw2hPo9rDII9gx4I53_F4yJl&ust=1679087026283000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCICFgeCs4f0CFQAAAAAdAAAAABAF', 
+					@UserId int = 0415
+			
+
+	Execute dbo.Friends_Insert
+			
+			@Title,
+            @Bio, 
+            @Summary, 
+            @Headline, 
+            @Slug, 
+            @StatusId,
+            @PrimaryImageUrl, 
+            @UserId,
+			@Id OUTPUT
+
+				
+		
+		Select @Id
+		Select * 
+		From dbo.Friends
+		Where Id = @Id
+
+
+*/
+BEGIN
+
+
+INSERT INTO [dbo].[Friends]
+           ([Title],
+            [Bio],
+            [Summary],
+            [Headline],
+            [Slug],
+            [StatusId],
+            [PrimaryImageUrl],
+            [UserId])
+     VALUES
+           (@Title,
+            @Bio, 
+            @Summary, 
+            @Headline, 
+            @Slug, 
+            @StatusId,
+            @PrimaryImageUrl, 
+            @UserId)
+
+SET @Id = SCOPE_IDENTITY()
+
+Select @ID as InsideProc
+
+END 
